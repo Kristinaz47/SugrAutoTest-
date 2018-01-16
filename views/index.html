@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>HomePage | Sugr Auto Test</title>
+    <style>
+        .sugr_container {
+            width: 100%;
+            height: 100%;
+            /*background-image: url("../images/timg.jpg") ;*/
+            -webkit-background-size: 100% 100%;
+            top: 0;
+            position: fixed;
+            left: 0;
+            overflow-x: hidden;
+            overflow-y: auto;
+            background: #35af6e no-repeat;
+        }
+    </style>
+</head>
+<body style="top: 0;">
+<div class="sugr_container">
+
+
+    <div class="device_container" style="background-color: #423e3e4a;width: 80%;margin: 5% auto;height: 20%;padding: 15px">
+            <p id="online_number" style="color: #FFFFFF;padding: 0;margin: 0"></p>
+            <p id="onasjdfklasjdflasdk"></p>
+    </div>
+
+    <br/>
+    <br/>
+    <div style="width: 100%;height: 100%">
+        <div class="test_record_container" style="overflow-x: hidden;
+            overflow-y: auto;float: left;clear:right;background-color: #423e3e4a;width: 35%;margin-left: 10%;margin-right:auto;height: 100%">
+
+        </div>
+
+        <div class="test_setting_container" style="overflow-x: hidden;
+            overflow-y: auto;float: left;clear:right;background-color: #423e3e4a;width: 35%;margin-left: 10%;margin-right:auto;height: auto">
+
+        </div>
+    </div>
+
+</div>
+</body>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/javascripts/common.js?201801122323"></script>
+<script src="/javascripts/jquery.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+
+        socket = io.connect(satCommon.socketAddress);
+        socket.on("connect",function () {
+            console.log("connected");
+            socket.on("register", function (obj) {
+                var online = obj.onlineNumber;
+                console.log("web receiver: " + online);
+                $('#online_number').text("在线设备数量:"+online);
+            });
+            socket.emit("register", {"name": "webPage"});
+        });
+
+
+        socket.on("message", function (obj) {
+            console.log(obj);
+        });
+
+
+    });
+
+
+</script>
+
+</html>
