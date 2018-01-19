@@ -4,48 +4,20 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('sugrautotest:server');
-var server = require('http').Server(app);
-var io = require('socket.io')(server);   //依赖socket
-var socketManager = require("../server/lib/socketManager.js");
+const app = require('../app');
+const debug = require('debug')('sugrautotest:server');
+const server = require('http').Server(app);
+const io = require('socket.io')(server);   //依赖socket
+let socketManager = require("../utils/socketManager.js");
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+let port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 
-io.on('connection', function (socket) {
-
-    var username;
-
-    console.log('a user connected id:' + socket.id);
-    // change.change();
-    // io.emit("message", "yangjun111","yangjun222");
-    socket.broadcast.emit('message', "yangjun111", "yangjun222");
-    socket.on("disconnect", function () {
-        console.log(username +" has gone!");
-        socketManager.remove();
-        io.emit("register", {"onlineNumber":socketManager.getOnlineNum()});
-    });
-
-    socket.on("register", function (obj) {
-        socketManager.add();
-        socketManager.p1 = socket;
-        username = obj.name;
-        console.log("server receiver: " + obj.name);
-        io.emit("register", {"onlineNumber":socketManager.getOnlineNum()});
-
-    });
-
-    socket.on("message", function (obj) {
-        io.emit("message", obj + " from server");
-        console.log(obj);
-    });
-});
-
+socketManager.init(io);
 
 /**
  * Listen on provided port, on all network interfaces.
