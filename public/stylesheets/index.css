@@ -188,7 +188,7 @@
     border: 1px solid #ccc;
 }
 
-#TOTAL_TIMES {
+#names {
     font-family: "monospace";
     font-size: 17px;
     font-weight: normal;
@@ -196,7 +196,7 @@
     margin-top: 15px;
 }
 
-#totaltimes {
+#name {
     width: 100px;
     height: 25px;
     border-radius: 10px;
@@ -205,14 +205,14 @@
     border: 1px solid #ccc;
 }
 
-#PLAY_INTERVAL {
+#testers {
     font-family: "monospace";
     font-size: 17px;
     font-weight: normal;
     margin-left: 30px;
 }
 
-#interval {
+#tester {
     width: 100px;
     height: 25px;
     border-radius: 10px;

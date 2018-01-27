@@ -33,12 +33,13 @@
         <div id="PLAYBACK">Device Playback:&#160;&#160;<input type="text" id="playbackSPL"></div>
     </div>
     <div class="config3">
-        <div id="TOTAL_TIMES">Total times:&#160;&#160;<input type="text" id="totaltimes">&#160</div>
+        <div id="names">Name:&#160;&#160;<input type="text" id="name">&#160</div>
         <br/>
-        <div id="PLAY_INTERVAL">Playback interval:&#160;&#160;<input type="text" id="interval">&#160</div>
+        <div id="testers">Tester:&#160;&#160;<input type="text" id="tester">&#160</div>
+
 
         <button class="startbutton" onclick="startTest()">Start</button>
-        <div> NAME:&#160;&#160;<input type="text" id="name">&#160 </div>
+
     </div>
 
     <div class="lando">
@@ -93,19 +94,19 @@
         </div>
         <div class="onlinedevice2">
             <div class="scenarios">Scenarios</div>
-            <div class="rb2" id="silence_container">
+            <div class="rb2" id="silence_container" >
                 <div class="rb11">
                     <span class="span1">Silence</span><br/>
-                    <input type="checkbox" id="silence_cb" checked>
+                    <input type="checkbox" id="silence_cb">
                 </div>
             </div>
-            <div class="rb2" id="kitchen_container">
+            <div class="rb2" id="kitchen_container" style="display: none">
                 <div class="rb11">
                     <span class="span1">Kitchen</span><br/>
                     <input type="checkbox" id="kitchen_cb">
                 </div>
             </div>
-            <div class="rb2" id="music_container">
+            <div class="rb2" id="music_container" style="display: none">
                 <div class="rb11">
                     <span class="span1">Laptop Music</span><br/>
                     <input type="checkbox" id="music_cb">
@@ -119,6 +120,7 @@
             </div>
         </div>
         <div class="onlinedevice3" style="">
+            <div class="scenarios">DUT</div>
             <!--<div class="dut0">-->
                 <!--<div class="dut00">-->
                     <!--<span class="span2">DUT1</span><br/>-->

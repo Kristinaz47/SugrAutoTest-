@@ -41,10 +41,15 @@ function initSocket() {
                 $('#nss_90_3_container').show();
             else if (obj.name == 'SS_30_3')
                 $('#nss_30_3_container').show();
+
         } else if (obj.type == 'dut') {
             if (!(obj.uniqueId in dut_list)) {
                 addDut(obj);
             }
+        } else if (obj.type == 'ns'){
+            //显示kitchen,music
+            $('#kitchen_container').show();
+            $('#music_container').show();
         }
 
         console.log("receive online device :" + JSON.stringify(obj));
@@ -66,6 +71,10 @@ function initSocket() {
             if (dut_list.indexOf(uniqueId) != -1) {
                 removeDut(uniqueId);
             }
+        }else if (obj.type == 'ns'){
+            //隐藏显示
+            $('#kitchen_container').hide();
+            $('#music_container').hide();
         }
 
     });
@@ -127,13 +136,13 @@ function removeDut(uniqueId) {
 function startTest() {
     //查看哪些speaker显示
     let ss_list = [];
-    if ($('#nss_90_9_container').is(':visible')){
+    if ($('#nss_90_9_container').is(':visible')) {
         ss_list.push("SS_90_9");
     }
-    if ($('#nss_90_3_container').is(':visible')){
+    if ($('#nss_90_3_container').is(':visible')) {
         ss_list.push("SS_90_3");
     }
-    if ($('#nss_30_3_container').is(':visible')){
+    if ($('#nss_30_3_container').is(':visible')) {
         ss_list.push("SS_30_3");
     }
 
@@ -141,47 +150,107 @@ function startTest() {
     //查看哪些场景显示
     let sense_list = [];
 
-    if ($('#silence_cb').attr('checked')){
+    let ambientnoise = $('#ambientnoise').val();
+        silenceSPL = $('#silenceSPL').val();
+        noiseSPL = $('#noiseSPL').val();
+        externalSPL = $('#externalSPL').val();
+        playbackSPL = $('#playbackSPL').val();
+        kitchenSPL = $('#kitchenSPL').val();
+
+    let config = {ambientnoise,silenceSPL,noiseSPL,kitchenSPL,externalSPL,playbackSPL};
+
+
+    console.log(config);
+
+    if ($('#silence_cb').prop('checked')) {
+        if ($('#ambientnoise').val() === ''|| $('#silenceSPL').val() ==='') {
+            alert("Silence场景须填写Ambient noise及Silence SPL！");
+            return;
+        }
         sense_list.push("silence");
     }
-    if ($('#kitchen_cb').attr('checked')){
+
+    if ($('#kitchen_cb').prop('checked')) {
+        if ($('#ambientnoise').val() === ''|| $('#noiseSPL').val() ===''|| $('#kitchenSPL').val() ==='') {
+            alert("Kitchen场景须填写Ambient noise,noiseSPL及kitchenSPL！");
+            return;
+        }
         sense_list.push("kitchen");
     }
-    if ($('#music_cb').attr('checked')){
+
+    if ($('#music_cb').prop('checked')) {
+        if ($('#ambientnoise').val() === ''|| $('#noiseSPL').val() ===''|| $('#externalSPL').val() ==='') {
+            alert("Laptop music场景须填写Ambient noise,noiseSPL及externalSPL！");
+            return;
+        }
         sense_list.push("music");
     }
-    if ($('#playback_cb').attr('checked')){
+
+    if ($('#playback_cb').prop('checked')) {
+        if ($('#ambientnoise').val() === ''|| $('#noiseSPL').val() ===''|| $('#playbackSPL').val() ==='') {
+            alert("Device playback场景须填写Ambient noise,noiseSPL及playbackSPL！");
+            return;
+    }
         sense_list.push("playback");
     }
 
-    // console.log(sense_list);
-    name = $('#name').val();
+    // console.log('sense list size : '+sense_list.length);
+    let name = $('#name').val();
+    let tester = $('#tester').val();
+
 
     let data_ = {
+        tester,
         name,
-            ss_list,
-            sense_list,
-            dut_list };
+        ss_list,
+        sense_list,
+        dut_list
+    };
+
+    if (sense_list.length === 0) {
+        alert("场景必须选择一个及以上");
+        return
+    }
+
+    if (ss_list.length === 0) {
+        alert("Speech Speaker必须选择一个及以上");
+        return
+    }
+
+
+
+
+    console.log("tester : " +tester);
+    if ($('#tester').val() === '') {
+        alert("请填写Tester！")
+        return;
+    }
+
+    if ($('#name').val() === '') {
+        alert("请填写Name！")
+        return;
+    }
+
 
     console.log(JSON.stringify(data_));
-
-    $.ajax({
-        type: "POST",
-        url: satCommon.ipAddress + '/start',
-        data:data_,
-        dataType: "json",
-        async:true,
-        cache:false,
-        traditional:true,
-        success: function (resultData) {
-            alert(JSON.stringify(resultData));
-
-            window.location.replace(satCommon.ipAddress+"?testId="+resultData.testId);
-
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-        }
-    });
+//
+// $.ajax({
+//     type: "POST",
+//     url: satCommon.ipAddress + '/start',
+//     data:data_,
+//     dataType: "json",
+//     async:true,
+//     cache:false,
+//     traditional:true,
+//     success: function (resultData) {
+//         alert(JSON.stringify(resultData));
+//
+//         window.location.replace(satCommon.ipAddress+"?testId="+resultData.testId);
+//
+//     },
+//     error: function (XMLHttpRequest, textStatus, errorThrown) {
+//     }
+// });
 
 
 }
