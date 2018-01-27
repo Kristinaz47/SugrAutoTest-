@@ -1,8 +1,8 @@
 /**
  * Created by Jeromeyang on 2017/12/20.
  */
-var mongoose = require('mongoose'),
-    DB_URL = 'mongodb://localhost:27017/sugr_christmas';
+let mongoose = require('mongoose'),
+    DB_URL = 'mongodb://localhost:27017/sugrats';
 
 mongoose.Promise = global.Promise;
 mongoose.set('debug', true);

@@ -24,6 +24,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function (req, res, next) {
+   res.header("Access-Control-Allow-Origin", "*");
+   next();
+});
+
 app.use('/', system);
 app.use('/upload',upload);
 app.use('/socket',socket);

@@ -3,7 +3,7 @@
  */
 let mongoose = require('../../../db'),
     Schema = mongoose.Schema;
-
+//VS : volume setting
 let SPLSettings = new Schema({
     id:{type:String,unique:true},
     ambientNoise : { type: Number },

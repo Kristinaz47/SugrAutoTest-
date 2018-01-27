@@ -1,0 +1,463 @@
+.pagename {
+    font-family: "monospace";
+    font-size: 24px;
+    font-weight: bold;
+    color: #009933;
+    margin: 12px
+}
+
+.config1 {
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 1%;
+    height: 240px;
+    width: 33%;
+    padding-top: 20px;
+    border-bottom: 2px solid #009933;
+}
+
+.config2 {
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    height: 240px;
+    width: 32%;
+    padding-top: 20px;
+    border-bottom: 2px solid #009933;
+}
+
+.config3 {
+    float: right;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-right: 1%;
+    height: 240px;
+    width: 33%;
+    padding-top: 20px;
+    border-bottom: 2px solid #009933;
+}
+
+.lando {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.list {
+    float: left;
+    width: 320px;
+    height: 100%;
+    padding: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+
+}
+
+.onlinedevice1 {
+    width: calc(100% - 380px);
+    height: 180px;
+    float: right;
+    padding: 10px;
+    margin: 10px;
+    margin-bottom: 0;
+    margin-left: 23px;
+    border-bottom: 1px solid #009933
+}
+
+.onlinedevice2 {
+    width: calc(100% - 380px);
+    height: 180px;
+    float: right;
+    padding: 10px;
+    margin: 10px;
+    margin-bottom: 0;
+    margin-left: 23px;
+    border-bottom: 1px solid #009933
+}
+
+.onlinedevice3 {
+    width: calc(100% - 380px);
+    height: calc(100% - 200px);
+    float: right;
+    padding: 10px;
+    margin: 10px;
+    margin-top: unset;
+    margin-left: 23px;
+
+}
+
+#AN {
+    font-family: "monospace";
+    font-size: 17px;
+    font-weight: normal;
+    margin-left: 20px;
+    margin-top: 15px;
+    padding-left: 20px
+}
+
+#ambientnoise {
+    width: 100px;
+    height: 25px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+
+#SILENCE {
+    font-family: "monospace";
+    font-size: 17px;
+    font-weight: normal;
+    margin-left: 20px;
+    padding-left: 20px
+}
+
+#silenceSPL {
+    width: 100px;
+    height: 25px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+
+#NOISE {
+    font-family: "monospace";
+    font-size: 17px;
+    font-weight: normal;
+    margin-left: 20px;
+    padding-left: 20px
+}
+
+#noiseSPL {
+    width: 100px;
+    height: 25px;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+
+#EXTERNAL {
+    font-family: "monospace";
+    font-size: 17px;
+    font-weight: normal;
+    margin-left: 10px;
+    margin-top: 15px;
+}
+
+#externalSPL {
+    width: 100px;
+    height: 25px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+
+#KITCHEN {
+    font-family: "monospace";
+    font-size: 17px;
+    font-weight: normal;
+    margin-left: 10px;
+}
+
+#kitchenSPL {
+    width: 100px;
+    height: 25px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+
+#PLAYBACK {
+    font-family: "monospace";
+    font-size: 17px;
+    font-weight: normal;
+    margin-left: 10px;
+}
+
+#playbackSPL {
+    width: 100px;
+    height: 25px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+
+#TOTAL_TIMES {
+    font-family: "monospace";
+    font-size: 17px;
+    font-weight: normal;
+    margin-left: 30px;
+    margin-top: 15px;
+}
+
+#totaltimes {
+    width: 100px;
+    height: 25px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+
+#PLAY_INTERVAL {
+    font-family: "monospace";
+    font-size: 17px;
+    font-weight: normal;
+    margin-left: 30px;
+}
+
+#interval {
+    width: 100px;
+    height: 25px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+
+.startbutton {
+    background-color: #009933;
+    position: relative;
+    border-radius: 40px;
+    border: none;
+    margin: 15px;
+    margin-left: 40px;
+    font-size: 28px;
+    font-weight: bolder;
+    color: #ffffff;
+    padding: 16px;
+    width: 165px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.startbutton:after {
+    content: "";
+    background: #d9d9d9;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+
+.startbutton:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+
+#list {
+    font-family: "monospace";
+    font-size: 20px;
+    font-weight: bolder;
+    margin-left: 6px;
+    margin-top: 7px
+}
+
+#listitem {
+    font-family: "monospace";
+    font-size: 17px;
+    font-weight: normal;
+    margin-left: 12px;
+    margin-top: 7px
+}
+
+a.list1:link {
+    text-decoration: none;
+    color: #4d4d4d;
+}
+
+a.list1:visited {
+    text-decoration: none;
+    color: #99cc66;
+}
+
+a.list1:hover {
+    text-decoration: none;
+    color: #8a8a8a;
+}
+
+a.list2:link {
+    text-decoration: none;
+    color: #4d4d4d;
+}
+
+a.list2:visited {
+    text-decoration: none;
+    color: #99cc66;
+}
+
+a.list2:hover {
+    text-decoration: none;
+    color: #8a8a8a;
+}
+
+a.list3:link {
+    text-decoration: none;
+    color: #4d4d4d;
+}
+
+a.list3:visited {
+    text-decoration: none;
+    color: #99cc66;
+}
+
+a.list3:hover {
+    text-decoration: none;
+    color: #8a8a8a;
+}
+
+.morebutton {
+    background-color: #009933;
+    position: relative;
+    float: right;
+    border-radius: 40px;
+    border: none;
+    margin: 20px;
+    font-size: 28px;
+    color: #ffffff;
+    padding: 11px;
+    width: 100px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.morebutton:after {
+    content: "";
+    background: #d9d9d9;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+
+.morebutton:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+
+input:focus {
+    outline: none
+}
+
+button:focus {
+    outline: none
+}
+
+.rb1 {
+    float: left;
+    display: none;
+    width: 33%
+}
+
+.rb11 {
+    text-align: center;
+    width: 100%
+}
+
+.scenarios {
+    font-family: "monospace";
+    font-size: 20px;
+    font-weight: bolder;
+    margin-left: 6px;
+    margin-top: 7px
+}
+
+.rb2 {
+    float: left;
+    width: 25%
+}
+
+.positions {
+    font-family: "monospace";
+    font-size: 20px;
+    font-weight: bolder;
+    margin-left: 6px;
+    margin-top: 7px
+}
+
+.span1 {
+    display: block;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+[type=checkbox] {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px
+}
+
+.dut0 {
+    float: left;
+    width: 28%
+}
+
+.dut00 {
+    text-align: center;
+    float: left;
+    width: 100%
+}
+
+.scen {
+    text-align: center;
+    float: left;
+    font-weight: bold
+}
+
+.dut1 {
+    float: left;
+    width: 18%
+}
+
+.dut11 {
+    text-align: center;
+    width: 100%
+}
+
+.span2 {
+    display: block;
+    margin-top: 50px;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+[type=checkbox] {
+    width: 23px;
+    height: 23px;
+}
+
+#position {
+    width: 107px;
+}
+
+#position1 {
+    width: 107px;
+    margin-left: 4px
+}

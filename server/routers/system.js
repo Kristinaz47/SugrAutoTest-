@@ -2,31 +2,84 @@ let express = require('express');
 let router = express.Router();
 let path = require('path');
 let socketManager = require("../../utils/socketManager.js");
-
+let testManager = require('../../utils/testManager');
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.sendFile("index.html",{root:path.resolve(__dirname, '../../views/')})
+router.get('/', function (req, res, next) {
+    console.log(req.query.testId);
+    if (testManager.getCurrentTestId()!=null || req.query.testId != undefined) {
+        res.redirect('/running?testId=' + req.query.testId);
+    } else {
+        res.sendFile("index.html", {root: path.resolve(__dirname, '../../views/')})
+    }
 });
 
+router.get('/dut_detail', function (req, res, next) {
+    console.log(req.query.testId);
 
-router.get('/login', function(req, res, next) {
+    res.sendFile("dut_detail.html", {root: path.resolve(__dirname, '../../views/')})
+});
+
+router.get('/dut_list', function (req, res, next) {
+    res.sendFile("dut_list.html", {root: path.resolve(__dirname, '../../views/')})
+});
+
+router.get('/running', function (req, res, next) {
+    if (req.query.testId){
+        res.sendFile("running.html", {root: path.resolve(__dirname, '../../views/')})
+    }else {
+        res.end('非法请求','utf-8');
+    }
+
+});
+
+router.get('/login', function (req, res, next) {
     // socketManager.init();
     res.end()
 });
 
-router.get('/register', function(req, res, next) {
+router.get('/register', function (req, res, next) {
     // socketManager.init();
     res.redirect('/');
     // res.end()
 });
 
-router.get('/start',function (req, res, next) {
+router.post('/start', function (req, res, next) {
+
+    console.log(req.body);
+    testManager.start(req.body, function (id) {
+        res.json({testId: id});
+        res.end();
+    });
 
     // socketManager.p1.emit("register",{"onlineNumber":100});
-    socketManager.getSS_90_9Socket().emit("register",{"onlineNumber":100});
-    res.end()
+    // socketManager.getSS_90_9Socket().emit("register",{"onlineNumber":100});
+
+    // res.location('/');
+    // console.log(req.body);
+    // res.end();
 });
+
+/**
+ * 获取测试列表
+ * limit 个数
+ */
+router.get('/getTestList', function (req, res, next) {
+    let limit = req.query.limit;
+    if (limit == undefined){//获取全部
+
+    }
+});
+
+router.get('/getRunningLog',function (req, res, next) {
+
+     testManager.getRunningLog(function (runningLog) {
+         res.send(runningLog);
+         res.end();
+    });
+
+});
+
 
 module.exports = router;

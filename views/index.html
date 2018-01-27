@@ -5,656 +5,306 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HomePage | Sugr Auto Test</title>
     <style>
-        html {background-color: #FFFFFF}
-        .pagename{font-family: "monospace";
-            font-size: 24px;
-            font-weight: bold;
-            color: #009933;
-            margin: 12px}
-        .config1 {float:left;
-            margin-top: 10px;
-            margin-bottom: 20px;
-            margin-left: 1%;
-            height: 240px;
-            width: 33%;
-            padding-top: 20px;
-            border-bottom: 2px solid #009933;
+        html {
+            background-color: #FFFFFF
         }
-        .config2 {float: left;
-            margin-top: 10px;
-            margin-bottom: 20px;
-            height: 240px;
-            width: 32%;
-            padding-top: 20px;
-            border-bottom: 2px solid #009933;
-        }
-        .config3 {float: right;
-            margin-top: 10px;
-            margin-bottom: 20px;
-            margin-right: 1%;
-            height: 240px;
-            width:33%;
-            padding-top: 20px;
-            border-bottom: 2px solid #009933;
-        }
-        .lando{width: 100%;
-            height: auto;
-            overflow:hidden;
-        }
-        .list {float:left;
-            width: 320px;
-            height: 100%;
-            padding: 10px;
-            margin-left: 10px;
-            margin-top: 10px;
-
-        }
-        .onlinedevice1{width:  calc(100% - 380px);
-            height: 180px;
-            float:right;
-            padding:10px;
-            margin: 10px;
-            margin-bottom: no;
-            margin-left: 23px;
-            border-bottom: 1px solid #009933
-        }
-
-        .onlinedevice2{width:  calc(100% - 380px);
-            height: 180px;
-            float:right;
-            padding:10px;
-            margin: 10px;
-            margin-bottom: no;
-            margin-left: 23px;
-            border-bottom: 1px solid #009933
-        }
-
-        .onlinedevice3{width:  calc(100% - 380px);
-            height: calc(100% - 200px);
-            float:right;
-            padding:10px;
-            margin: 10px;
-            margin-top: unset;
-            margin-left: 23px;
-
-        }
-        #AN{font-family: "monospace";
-            font-size: 17px;
-            font-weight: normal;
-            margin-left: 20px;
-            margin-top: 15px;
-            padding-left:20px}
-        #ambientnoise{width: 50px;
-            height: 25px;
-            border-radius: 10px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-        }
-        #SILENCE{font-family: "monospace";
-            font-size: 17px;
-            font-weight: normal;
-            margin-left: 20px;
-            padding-left:20px}
-        #silenceSPL{width: 50px;
-            height: 25px;
-            border-radius: 10px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-        }
-        #NOISE{font-family: "monospace";
-            font-size: 17px;
-            font-weight: normal;
-            margin-left: 20px;
-            padding-left:20px}
-        #noiseSPL{width: 50px;
-            height: 25px;
-            border-radius: 10px;
-            margin-top: 15px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-        }
-        #EXTERNAL{font-family: "monospace";
-            font-size: 17px;
-            font-weight: normal;
-            margin-left: 10px;
-            margin-top: 15px;}
-        #externalSPL{width: 50px;
-            height: 25px;
-            border-radius: 10px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-        }
-        #KITCHEN{font-family: "monospace";
-            font-size: 17px;
-            font-weight: normal;
-            margin-left: 10px;}
-        #kitchenSPL{width: 50px;
-            height: 25px;
-            border-radius: 10px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-        }
-        #PLAYBACK{font-family: "monospace";
-            font-size: 17px;
-            font-weight: normal;
-            margin-left: 10px;}
-        #playbackSPL{width: 50px;
-            height: 25px;
-            border-radius: 10px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-        }
-        #TOTALTIMES{font-family: "monospace";
-            font-size: 17px;
-            font-weight: normal;
-            margin-left: 30px;
-            margin-top: 15px;}
-        #totaltimes{width: 50px;
-            height: 25px;
-            border-radius: 10px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-        }
-        #INTERVAL{font-family: "monospace";
-            font-size: 17px;
-            font-weight: normal;
-            margin-left: 30px;}
-        #interval{width: 50px;
-            height: 25px;
-            border-radius: 10px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-        }
-        .startbutton{background-color: #009933;
-            position: relative;
-            border-radius: 40px;
-            border: none;
-            margin: 15px;
-            margin-left: 40px;
-            font-size: 28px;
-            font-weight: bolder;
-            color: #ffffff;
-            padding: 16px;
-            width: 165px;
-            text-align: center;
-            -webkit-transition-duration: 0.4s; /* Safari */
-            transition-duration: 0.4s;
-            text-decoration: none;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .startbutton:after {
-            content: "";
-            background: #d9d9d9;
-            display: block;
-            position: absolute;
-            padding-top: 300%;
-            padding-left: 350%;
-            margin-left: -20px!important;
-            margin-top: -120%;
-            opacity: 0;
-            transition: all 0.8s
-        }
-
-        .startbutton:active:after {
-            padding: 0;
-            margin: 0;
-            opacity: 1;
-            transition: 0s
-        }
-        #list{font-family: "monospace";
-            font-size: 20px;
-            font-weight: bolder;
-            margin-left: 6px;
-            margin-top: 7px}
-        #listitem{font-family: "monospace";
-            font-size: 17px;
-            font-weight: normal;
-            margin-left: 12px;
-            margin-top: 7px}
-        a.list1:link    {text-decoration:none;color: #4d4d4d;}
-        a.list1:visited {text-decoration:none;color: #99cc66;}
-        a.list1:hover   {text-decoration:none;color: #8a8a8a;}
-
-        a.list2:link    {text-decoration:none;color: #4d4d4d;}
-        a.list2:visited {text-decoration:none;color: #99cc66;}
-        a.list2:hover   {text-decoration:none;color: #8a8a8a;}
-
-        a.list3:link    {text-decoration:none;color: #4d4d4d;}
-        a.list3:visited {text-decoration:none;color: #99cc66;}
-        a.list3:hover   {text-decoration:none;color: #8a8a8a;}
-
-        .morebutton{background-color: #009933;
-            position: relative;
-            float: right;
-            border-radius: 40px;
-            border: none;
-            margin: 20px;
-            font-size: 28px;
-            color: #ffffff;
-            padding: 11px;
-            width: 100px;
-            text-align: center;
-            -webkit-transition-duration: 0.4s; /* Safari */
-            transition-duration: 0.4s;
-            text-decoration: none;
-            overflow: hidden;
-            cursor: pointer;}
-        .morebutton:after {
-            content: "";
-            background: #d9d9d9;
-            display: block;
-            position: absolute;
-            padding-top: 300%;
-            padding-left: 350%;
-            margin-left: -20px!important;
-            margin-top: -120%;
-            opacity: 0;
-            transition: all 0.8s
-        }
-
-        .morebutton:active:after {
-            padding: 0;
-            margin: 0;
-            opacity: 1;
-            transition: 0s
-        }
-
-        input:focus{outline: none}
-        button:focus{outline: none}
-
-
-
-        .rb1 {float:left;
-            width:33%}
-        .rb11 {text-align:center;
-            width:100%}
-
-        .scenarios{font-family: "monospace";
-            font-size: 20px;
-            font-weight: bolder;
-            margin-left: 6px;
-            margin-top: 7px}
-
-        .rb2{float:left;
-            width:25%}
-
-        .positions{font-family: "monospace";
-            font-size: 20px;
-            font-weight: bolder;
-            margin-left: 6px;
-            margin-top: 7px}
-
-        .span1{
-            display:block;
-            margin-top: 20px;
-            font-weight: bold;
-            font-size: 30px;
-        }
-        [type=checkbox]
-        {width: 20px;
-            height: 20px;
-            border-radius: 10px}
-
-        .dut0{float: left;
-            width: 28%}
-        .dut00{text-align: center;
-            float: left;
-            width: 100%}
-        .scen{text-align: center;
-            float: left;
-            font-weight: bold}
-
-        .dut1 {float:left;
-            width:18%}
-        .dut11 {text-align:center;
-            width:100%}
-        .span2{
-            display:block;
-            margin-top: 50px;
-            font-weight: bolder;
-            font-size: 20px;
-        }
-        [type=checkbox]
-        {   width: 23px;
-            height: 23px;
-        }
-
-        #position{width: 107px;}
-        #position1{width: 107px;
-            margin-left: 4px}
-
-
-
-
     </style>
-
-    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/index.css"/>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css"/>
 
 </head>
 <body>
-<div class="pagename">Sugr FarField Auto Test Tool</div>
+<div class="container">
+    <div class="pagename">Sugr FarField Auto Test Tool</div>
 
-<div class="config1">
-    <div id="AN">Ambient noise:&#160;&#160;<input type="text" id="ambientnoise" ></div>
-    <br/>
-    <div id="SILENCE">Silence SPL:&#160;&#160;<input type="text" id="silenceSPL" ></div>
-    <br/>
-    <div id="NOISE">Noise SPL:&#160;&#160;<input type="text" id="noiseSPL" ></div>
+    <div class="config1">
+        <div id="AN">Ambient noise:&#160;&#160;<input type="text" id="ambientnoise"></div>
+        <br/>
+        <div id="SILENCE">Silence SPL:&#160;&#160;<input type="text" id="silenceSPL"></div>
+        <br/>
+        <div id="NOISE">Noise SPL:&#160;&#160;<input type="text" id="noiseSPL"></div>
 
-</div>
-<div class="config2">
-    <div id="EXTERNAL">External Music:&#160;&#160;<input type="text" id="externalSPL" ></div>
-    <br/>
-    <div id="KITCHEN">Kitchen Noise:&#160;&#160;<input type="text" id="kitchenSPL" ></div>
-    <br/>
-    <div id="PLAYBACK">Device Playback:&#160;&#160;<input type="text" id="playbackSPL" ></div>
-</div>
-<div class="config3">
-    <div id="TOTALTIMES">Total times:&#160;&#160;<input type="text" id="totaltimes" >&#160 </div>
-    <br/>
-    <div id="INTERVAL">Playback interval:&#160;&#160;<input type="text" id="interval" >&#160 </div>
-    <button class="startbutton">Start</button>
+    </div>
+    <div class="config2">
+        <div id="EXTERNAL">External Music:&#160;&#160;<input type="text" id="externalSPL"></div>
+        <br/>
+        <div id="KITCHEN">Kitchen Noise:&#160;&#160;<input type="text" id="kitchenSPL"></div>
+        <br/>
+        <div id="PLAYBACK">Device Playback:&#160;&#160;<input type="text" id="playbackSPL"></div>
+    </div>
+    <div class="config3">
+        <div id="TOTAL_TIMES">Total times:&#160;&#160;<input type="text" id="totaltimes">&#160</div>
+        <br/>
+        <div id="PLAY_INTERVAL">Playback interval:&#160;&#160;<input type="text" id="interval">&#160</div>
 
-</div>
+        <button class="startbutton" onclick="startTest()">Start</button>
+        <div> NAME:&#160;&#160;<input type="text" id="name">&#160 </div>
+    </div>
 
-<div class="lando">
-    <div class="list">
-        <div id="list">List(Recent 10 test)：</div><br/>
-        <ul id="listitem" type="disc">
-            <li> <a class="list1" href="http://www.baidu.com" target="_blank">20170101FFtest</a></li>
+    <div class="lando">
+        <div class="list">
+            <div id="list">List(Recent 10 test)：</div>
             <br/>
-            <li><a class="list2" href="http://www.baidu.com" target="_blank">20170102FFtest</a></li>
-            <br/>
-            <li><a class="list3" href="http://www.baidu.com" target="_blank">20170103FFtest</a></li>
-            <br/>
-            <li>20170104FFtest</li>
-            <br/>
-            <li>20170105FFtest</li><br/>
-            <li>20170106FFtest</li><br/>
-            <li>20170107FFtest</li><br/>
-            <li>20170108FFtest</li><br/>
-            <li>20170109FFtest</li><br/>
-            <li>20170110FFtest</li>
+            <ul id="listitem" type="disc">
+                <li><a class="list1" href="http://www.baidu.com">20170101FFtest</a></li>
+                <br/>
+                <li><a class="list1" href="http://www.baidu.com" target="_blank">20170102FFtest</a></li>
+                <br/>
+                <li><a class="list1" href="http://www.baidu.com" target="_blank">20170103FFtest</a></li>
+                <br/>
+                <li>20170104FFtest</li>
+                <br/>
+                <li>20170105FFtest</li>
+                <br/>
+                <li>20170106FFtest</li>
+                <br/>
+                <li>20170107FFtest</li>
+                <br/>
+                <li>20170108FFtest</li>
+                <br/>
+                <li>20170109FFtest</li>
+                <br/>
+                <li>20170110FFtest</li>
 
-        </ul>
-        <button class="morebutton">More</button>
+            </ul>
+            <button class="morebutton">More</button>
+        </div>
+        <div class="onlinedevice1">
+            <div class="positions">Positions</div>
+            <div class="rb1" id="nss_30_3_container">
+                <div class="rb11" id="sc1">
+                    <span class="span1">3ft&#160;/&#160;30°</span><br/>
+                    <input type="checkbox" id="nss_30_3_cb">
+                </div>
+            </div>
+            <div class="rb1" id="nss_90_3_container">
+                <div class="rb11" id="sc2">
+                    <span class="span1">3ft&#160;/&#160;90°</span><br/>
+                    <input type="checkbox" id="nss_90_3_cb">
+                </div>
+            </div>
+            <div class="rb1" id="nss_90_9_container">
+                <div class="rb11" id="sc3">
+                    <span class="span1">9ft&#160;/&#160;90°</span><br/>
+                    <input type="checkbox" id="nss_90_9_cb">
+                </div>
+            </div>
+
+        </div>
+        <div class="onlinedevice2">
+            <div class="scenarios">Scenarios</div>
+            <div class="rb2" id="silence_container">
+                <div class="rb11">
+                    <span class="span1">Silence</span><br/>
+                    <input type="checkbox" id="silence_cb" checked>
+                </div>
+            </div>
+            <div class="rb2" id="kitchen_container">
+                <div class="rb11">
+                    <span class="span1">Kitchen</span><br/>
+                    <input type="checkbox" id="kitchen_cb">
+                </div>
+            </div>
+            <div class="rb2" id="music_container">
+                <div class="rb11">
+                    <span class="span1">Laptop Music</span><br/>
+                    <input type="checkbox" id="music_cb">
+                </div>
+            </div>
+            <div class="rb2" id="playback_container">
+                <div class="rb11">
+                    <span class="span1">Playback</span><br/>
+                    <input type="checkbox" id="playback_cb">
+                </div>
+            </div>
+        </div>
+        <div class="onlinedevice3" style="">
+            <!--<div class="dut0">-->
+                <!--<div class="dut00">-->
+                    <!--<span class="span2">DUT1</span><br/>-->
+
+                    <!--<input type="checkbox" checked>-->
+                <!--</div>-->
+            <!--</div>-->
+
+
+
+
+            <!--<div class="dut1">-->
+            <!--<div class="dut11">-->
+            <!--<span class="span2">DUT2</span><br/>-->
+
+            <!--<select id="position">-->
+            <!--<option value="1">Silence</option>-->
+            <!--<option value="2">Kitchen</option>-->
+            <!--<option value="3">Device</option>-->
+            <!--<option value="3">Exteral Music</option>-->
+            <!--</select><br/>-->
+            <!--<select id="position">-->
+            <!--<option value="1">3ft/30°</option>-->
+            <!--<option value="2">3ft/90°</option>-->
+            <!--<option value="3">9ft/90°</option>-->
+            <!--</select><br/>-->
+            <!--<input type="checkbox" id="dut_1" checked>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="dut1">-->
+            <!--<div class="dut11">-->
+            <!--<span class="span2">DUT3</span><br/>-->
+
+            <!--<select id="position">-->
+            <!--<option value="1">Silence</option>-->
+            <!--<option value="2">Kitchen</option>-->
+            <!--<option value="3">Device</option>-->
+            <!--<option value="3">Exteral Music</option>-->
+            <!--</select><br/>-->
+            <!--<select id="position">-->
+            <!--<option value="1">3ft/30°</option>-->
+            <!--<option value="2">3ft/90°</option>-->
+            <!--<option value="3">9ft/90°</option>-->
+            <!--</select><br/>-->
+            <!--<input type="checkbox" id="dut_1" checked>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="dut1">-->
+            <!--<div class="dut11">-->
+            <!--<span class="span2">DUT4</span><br/>-->
+
+            <!--<select id="position">-->
+            <!--<option value="1">Silence</option>-->
+            <!--<option value="2">Kitchen</option>-->
+            <!--<option value="3">Device</option>-->
+            <!--<option value="3">Exteral Music</option>-->
+            <!--</select><br/>-->
+            <!--<select id="position">-->
+            <!--<option value="1">3ft/30°</option>-->
+            <!--<option value="2">3ft/90°</option>-->
+            <!--<option value="3">9ft/90°</option>-->
+            <!--</select><br/>-->
+            <!--<input type="checkbox" id="dut_1" checked>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="dut1">-->
+            <!--<div class="dut11">-->
+            <!--<span class="span2">DUT5</span><br/>-->
+
+            <!--<select id="position">-->
+            <!--<option value="1">Silence</option>-->
+            <!--<option value="2">Kitchen</option>-->
+            <!--<option value="3">Device</option>-->
+            <!--<option value="3">Exteral Music</option>-->
+            <!--</select><br/>-->
+            <!--<select id="position">-->
+            <!--<option value="1">3ft/30°</option>-->
+            <!--<option value="2">3ft/90°</option>-->
+            <!--<option value="3">9ft/90°</option>-->
+            <!--</select><br/>-->
+            <!--<input type="checkbox" id="dut_1" checked>-->
+            <!--</div>-->
+            <!--</div>-->
+        </div>
+        <!--<div class="onlinedevice3" style="display: none">-->
+        <!--<div class="dut0">-->
+        <!--<div class="dut00">-->
+        <!--<span class="span2">DUT6</span><br/>-->
+
+        <!--<select id="position">-->
+        <!--<option value="1">Silence</option>-->
+        <!--<option value="2">Kitchen</option>-->
+        <!--<option value="3">Device</option>-->
+        <!--<option value="3">Exteral Music</option>-->
+        <!--</select><br/>-->
+
+        <!--<select id="position">-->
+        <!--<option value="1">3ft/30°</option>-->
+        <!--<option value="2">3ft/90°</option>-->
+        <!--<option value="3">9ft/90°</option>-->
+        <!--</select><br/>-->
+        <!--<input type="checkbox" id="dut_1" checked>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="dut1">-->
+        <!--<div class="dut11">-->
+        <!--<span class="span2">DUT7</span><br/>-->
+
+        <!--<select id="position">-->
+        <!--<option value="1">Silence</option>-->
+        <!--<option value="2">Kitchen</option>-->
+        <!--<option value="3">Device</option>-->
+        <!--<option value="3">Exteral Music</option>-->
+        <!--</select><br/>-->
+        <!--<select id="position">-->
+        <!--<option value="1">3ft/30°</option>-->
+        <!--<option value="2">3ft/90°</option>-->
+        <!--<option value="3">9ft/90°</option>-->
+        <!--</select><br/>-->
+        <!--<input type="checkbox" id="dut_1" checked>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="dut1">-->
+        <!--<div class="dut11">-->
+        <!--<span class="span2">DUT8</span><br/>-->
+
+        <!--<select id="position">-->
+        <!--<option value="1">Silence</option>-->
+        <!--<option value="2">Kitchen</option>-->
+        <!--<option value="3">Device</option>-->
+        <!--<option value="3">Exteral Music</option>-->
+        <!--</select><br/>-->
+        <!--<select id="position">-->
+        <!--<option value="1">3ft/30°</option>-->
+        <!--<option value="2">3ft/90°</option>-->
+        <!--<option value="3">9ft/90°</option>-->
+        <!--</select><br/>-->
+        <!--<input type="checkbox" id="dut_1" checked>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="dut1">-->
+        <!--<div class="dut11">-->
+        <!--<span class="span2">DUT9</span><br/>-->
+
+        <!--<select id="position">-->
+        <!--<option value="1">Silence</option>-->
+        <!--<option value="2">Kitchen</option>-->
+        <!--<option value="3">Device</option>-->
+        <!--<option value="3">Exteral Music</option>-->
+        <!--</select><br/>-->
+        <!--<select id="position">-->
+        <!--<option value="1">3ft/30°</option>-->
+        <!--<option value="2">3ft/90°</option>-->
+        <!--<option value="3">9ft/90°</option>-->
+        <!--</select><br/>-->
+        <!--<input type="checkbox" id="dut_1" checked>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="dut1">-->
+        <!--<div class="dut11">-->
+        <!--<span class="span2">DUT10</span><br/>-->
+
+        <!--<select id="position">-->
+        <!--<option value="1">Silence</option>-->
+        <!--<option value="2">Kitchen</option>-->
+        <!--<option value="3">Device</option>-->
+        <!--<option value="3">Exteral Music</option>-->
+        <!--</select><br/>-->
+        <!--<select id="position">-->
+        <!--<option value="1">3ft/30°</option>-->
+        <!--<option value="2">3ft/90°</option>-->
+        <!--<option value="3">9ft/90°</option>-->
+        <!--</select><br/>-->
+        <!--<input type="checkbox" id="dut_1" checked>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+
+
     </div>
-    <div class="onlinedevice1">
-        <div class="scenarios">Scenarios</div>
-        <div class="rb1">
-            <div class="rb11" id="sc1">
-                <span class="span1">3ft&#160;/&#160;30°</span><br/>
-                <input type="checkbox" id="cb_1"  checked>
-            </div>
-        </div>
-        <div class="rb1">
-            <div class="rb11" id="sc2">
-                <span class="span1">3ft&#160;/&#160;90°</span><br/>
-                <input type="checkbox" id="cb_1"  checked>
-            </div>
-        </div>
-        <div class="rb1">
-            <div class="rb11" id="sc3">
-                <span class="span1">9ft&#160;/&#160;90°</span><br/>
-                <input type="checkbox" id="cb_1"  checked>
-            </div>
-        </div>
-
-    </div>
-    <div class="onlinedevice2">
-        <div class="positions">Positions</div>
-        <div class="rb2">
-            <div class="rb11" id="po1">
-                <span class="span1">Science</span><br/>
-                <input type="checkbox" id="cb_1"  checked>
-            </div>
-        </div>
-        <div class="rb2">
-            <div class="rb11" id="po2">
-                <span class="span1">Kitchen</span><br/>
-                <input type="checkbox" id="cb_1"  checked>
-            </div>
-        </div>
-        <div class="rb2">
-            <div class="rb11" id="po3">
-                <span class="span1">Laptop Music</span><br/>
-                <input type="checkbox" id="cb_1"  checked>
-            </div>
-        </div>
-        <div class="rb2">
-            <div class="rb11" id="po4">
-                <span class="span1">Device Playback</span><br/>
-                <input type="checkbox" id="cb_1"  checked>
-            </div>
-        </div>
-    </div>
-    <div class="onlinedevice3">
-        <div class="dut0">
-            <div class="dut00">
-                <span class="span2">DUT1</span><br/>
-                <div class="scen">Scenarios&#160</div>
-                <select id="position"  >
-                    <option value="1" >Silence</option>
-                    <option value="2" >Kitchen</option>
-                    <option value="3" >Device</option>
-                    <option value="3" >Exteral Music</option>
-                </select><br/>
-                <div class="scen">Positions&#160</div>
-                <select id="position1">
-                    <option value="1" >3ft/30°</option>
-                    <option value="2" >3ft/90°</option>
-                    <option value="3" >9ft/90°</option>
-                </select><br/>
-                <input type="checkbox" id="dut_1"  checked>
-            </div>
-        </div>
-        <div class="dut1">
-            <div class="dut11">
-                <span class="span2">DUT2</span><br/>
-
-                <select id="position">
-                    <option value="1" >Silence</option>
-                    <option value="2" >Kitchen</option>
-                    <option value="3" >Device</option>
-                    <option value="3" >Exteral Music</option>
-                </select><br/>
-                <select id="position">
-                    <option value="1" >3ft/30°</option>
-                    <option value="2" >3ft/90°</option>
-                    <option value="3" >9ft/90°</option>
-                </select><br/>
-                <input type="checkbox" id="dut_1"  checked>
-            </div>
-        </div>
-        <div class="dut1">
-            <div class="dut11">
-                <span class="span2">DUT3</span><br/>
-
-                <select id="position">
-                    <option value="1" >Silence</option>
-                    <option value="2" >Kitchen</option>
-                    <option value="3" >Device</option>
-                    <option value="3" >Exteral Music</option>
-                </select><br/>
-                <select id="position" >
-                    <option value="1" >3ft/30°</option>
-                    <option value="2" >3ft/90°</option>
-                    <option value="3" >9ft/90°</option>
-                </select><br/>
-                <input type="checkbox" id="dut_1"  checked>
-            </div>
-        </div>
-        <div class="dut1">
-            <div class="dut11">
-                <span class="span2">DUT4</span><br/>
-
-                <select id="position">
-                    <option value="1" >Silence</option>
-                    <option value="2" >Kitchen</option>
-                    <option value="3" >Device</option>
-                    <option value="3" >Exteral Music</option>
-                </select><br/>
-                <select id="position">
-                    <option value="1" >3ft/30°</option>
-                    <option value="2" >3ft/90°</option>
-                    <option value="3" >9ft/90°</option>
-                </select><br/>
-                <input type="checkbox" id="dut_1"  checked>
-            </div>
-        </div>
-        <div class="dut1">
-            <div class="dut11">
-                <span class="span2">DUT5</span><br/>
-
-                <select id="position">
-                    <option value="1" >Silence</option>
-                    <option value="2" >Kitchen</option>
-                    <option value="3" >Device</option>
-                    <option value="3" >Exteral Music</option>
-                </select><br/>
-                <select id="position">
-                    <option value="1" >3ft/30°</option>
-                    <option value="2" >3ft/90°</option>
-                    <option value="3" >9ft/90°</option>
-                </select><br/>
-                <input type="checkbox" id="dut_1"  checked>
-            </div>
-        </div>
-    </div>
-    <div class="onlinedevice3">
-        <div class="dut0">
-            <div class="dut00">
-                <span class="span2">DUT6</span><br/>
-
-                <select id="position"  >
-                    <option value="1" >Silence</option>
-                    <option value="2" >Kitchen</option>
-                    <option value="3" >Device</option>
-                    <option value="3" >Exteral Music</option>
-                </select><br/>
-
-                <select id="position">
-                    <option value="1" >3ft/30°</option>
-                    <option value="2" >3ft/90°</option>
-                    <option value="3" >9ft/90°</option>
-                </select><br/>
-                <input type="checkbox" id="dut_1"  checked>
-            </div>
-        </div>
-        <div class="dut1">
-            <div class="dut11">
-                <span class="span2">DUT7</span><br/>
-
-                <select id="position">
-                    <option value="1" >Silence</option>
-                    <option value="2" >Kitchen</option>
-                    <option value="3" >Device</option>
-                    <option value="3" >Exteral Music</option>
-                </select><br/>
-                <select id="position">
-                    <option value="1" >3ft/30°</option>
-                    <option value="2" >3ft/90°</option>
-                    <option value="3" >9ft/90°</option>
-                </select><br/>
-                <input type="checkbox" id="dut_1"  checked>
-            </div>
-        </div>
-        <div class="dut1">
-            <div class="dut11">
-                <span class="span2">DUT8</span><br/>
-
-                <select id="position">
-                    <option value="1" >Silence</option>
-                    <option value="2" >Kitchen</option>
-                    <option value="3" >Device</option>
-                    <option value="3" >Exteral Music</option>
-                </select><br/>
-                <select id="position" >
-                    <option value="1" >3ft/30°</option>
-                    <option value="2" >3ft/90°</option>
-                    <option value="3" >9ft/90°</option>
-                </select><br/>
-                <input type="checkbox" id="dut_1"  checked>
-            </div>
-        </div>
-        <div class="dut1">
-            <div class="dut11">
-                <span class="span2">DUT9</span><br/>
-
-                <select id="position">
-                    <option value="1" >Silence</option>
-                    <option value="2" >Kitchen</option>
-                    <option value="3" >Device</option>
-                    <option value="3" >Exteral Music</option>
-                </select><br/>
-                <select id="position">
-                    <option value="1" >3ft/30°</option>
-                    <option value="2" >3ft/90°</option>
-                    <option value="3" >9ft/90°</option>
-                </select><br/>
-                <input type="checkbox" id="dut_1"  checked>
-            </div>
-        </div>
-        <div class="dut1">
-            <div class="dut11">
-                <span class="span2">DUT10</span><br/>
-
-                <select id="position">
-                    <option value="1" >Silence</option>
-                    <option value="2" >Kitchen</option>
-                    <option value="3" >Device</option>
-                    <option value="3" >Exteral Music</option>
-                </select><br/>
-                <select id="position">
-                    <option value="1" >3ft/30°</option>
-                    <option value="2" >3ft/90°</option>
-                    <option value="3" >9ft/90°</option>
-                </select><br/>
-                <input type="checkbox" id="dut_1"  checked>
-            </div>
-        </div>
-    </div>
-
-
 </div>
+
 </body>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/javascripts/common.js?201801122323"></script>
 <script src="/javascripts/jquery.min.js"></script>
-<script>
-
-    $(document).ready(function () {
-
-
-        socket = io.connect(satCommon.socketAddress);
-        socket.on("connect",function () {
-            console.log("connected");
-            socket.on("register", function (obj) {
-                let online = obj.onlineNumber;
-                console.log("web receiver: " + online);
-                $('#online_number').text("在线设备数量:"+online);
-            });
-            socket.emit("register", {"name": "SS_90_9"});
-        });
-
-
-        socket.on("message", function (obj) {
-            console.log(obj);
-        });
-
-
-    });
-
-
-</script>
+<script src="/javascripts/index.js?201801201824"></script>
 
 </html>
