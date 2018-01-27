@@ -46,7 +46,7 @@ function initSocket() {
             if (!(obj.uniqueId in dut_list)) {
                 addDut(obj);
             }
-        } else if (obj.type == 'ns'){
+        } else if (obj.type == 'ns') {
             //显示kitchen,music
             $('#kitchen_container').show();
             $('#music_container').show();
@@ -71,7 +71,7 @@ function initSocket() {
             if (dut_list.indexOf(uniqueId) != -1) {
                 removeDut(uniqueId);
             }
-        }else if (obj.type == 'ns'){
+        } else if (obj.type == 'ns') {
             //隐藏显示
             $('#kitchen_container').hide();
             $('#music_container').hide();
@@ -150,20 +150,20 @@ function startTest() {
     //查看哪些场景显示
     let sense_list = [];
 
-    let ambientnoise = $('#ambientnoise').val();
-        silenceSPL = $('#silenceSPL').val();
-        noiseSPL = $('#noiseSPL').val();
-        externalSPL = $('#externalSPL').val();
-        playbackSPL = $('#playbackSPL').val();
-        kitchenSPL = $('#kitchenSPL').val();
+    let ambientNoise = $('#ambientnoise').val();
+    let silenceSPL = $('#silenceSPL').val();
+    let noiseSPL = $('#noiseSPL').val();
+    let externalSPL = $('#externalSPL').val();
+    let playbackSPL = $('#playbackSPL').val();
+    let kitchenSPL = $('#kitchenSPL').val();
 
-    let config = {ambientnoise,silenceSPL,noiseSPL,kitchenSPL,externalSPL,playbackSPL};
+    let config = {ambientNoise, silenceSPL, noiseSPL, kitchenSPL, externalSPL, playbackSPL};
 
 
     console.log(config);
 
     if ($('#silence_cb').prop('checked')) {
-        if ($('#ambientnoise').val() === ''|| $('#silenceSPL').val() ==='') {
+        if ($('#ambientnoise').val() === '' || $('#silenceSPL').val() === '') {
             alert("Silence场景须填写Ambient noise及Silence SPL！");
             return;
         }
@@ -171,7 +171,7 @@ function startTest() {
     }
 
     if ($('#kitchen_cb').prop('checked')) {
-        if ($('#ambientnoise').val() === ''|| $('#noiseSPL').val() ===''|| $('#kitchenSPL').val() ==='') {
+        if ($('#ambientnoise').val() === '' || $('#noiseSPL').val() === '' || $('#kitchenSPL').val() === '') {
             alert("Kitchen场景须填写Ambient noise,noiseSPL及kitchenSPL！");
             return;
         }
@@ -179,7 +179,7 @@ function startTest() {
     }
 
     if ($('#music_cb').prop('checked')) {
-        if ($('#ambientnoise').val() === ''|| $('#noiseSPL').val() ===''|| $('#externalSPL').val() ==='') {
+        if ($('#ambientnoise').val() === '' || $('#noiseSPL').val() === '' || $('#externalSPL').val() === '') {
             alert("Laptop music场景须填写Ambient noise,noiseSPL及externalSPL！");
             return;
         }
@@ -187,10 +187,10 @@ function startTest() {
     }
 
     if ($('#playback_cb').prop('checked')) {
-        if ($('#ambientnoise').val() === ''|| $('#noiseSPL').val() ===''|| $('#playbackSPL').val() ==='') {
+        if ($('#ambientnoise').val() === '' || $('#noiseSPL').val() === '' || $('#playbackSPL').val() === '') {
             alert("Device playback场景须填写Ambient noise,noiseSPL及playbackSPL！");
             return;
-    }
+        }
         sense_list.push("playback");
     }
 
@@ -198,29 +198,40 @@ function startTest() {
     let name = $('#name').val();
     let tester = $('#tester').val();
 
+    let dut_list = [];
+
 
     let data_ = {
+        config,
         tester,
         name,
         ss_list,
         sense_list,
-        dut_list
-    };
+        dut_list,
 
+    };
+    console.log(JSON.stringify(data_));
+
+    console.log("sense_list: " + sense_list);
     if (sense_list.length === 0) {
         alert("场景必须选择一个及以上");
         return
     }
 
+    console.log("ss_list: " + ss_list);
     if (ss_list.length === 0) {
         alert("Speech Speaker必须选择一个及以上");
         return
     }
 
+    console.log("DUT_list: " + dut_list);
+    if (dut_list.length === 0) {
+        alert("DUT必须选择一个及以上");
+        return
+    }
 
 
-
-    console.log("tester : " +tester);
+    console.log("tester : " + tester);
     if ($('#tester').val() === '') {
         alert("请填写Tester！")
         return;
@@ -232,7 +243,7 @@ function startTest() {
     }
 
 
-    console.log(JSON.stringify(data_));
+
 //
 // $.ajax({
 //     type: "POST",
