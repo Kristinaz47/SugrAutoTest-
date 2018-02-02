@@ -46,8 +46,9 @@ exports.baiduASR = function(filePath,token,next){
         res.on('data', function (data) {
             body += data;
         }).on('end', function () {
+
             let result = JSON.parse(body);
-            // console.log(result.access_token);
+            console.log(body);
             next(result);
         });
     }).on('error', function (e) {

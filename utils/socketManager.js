@@ -9,7 +9,7 @@ let SS_30_3;
 let WEB_INDEX;
 let WEB_RUNNING;
 
-let SS_LIST;
+let SS_LIST = {};
 
 let NS;
 
@@ -74,7 +74,6 @@ let socketManager = {
         if (type == 'speaker') {
             if ("SS_90_9" == name && !SS_90_9) {
                 SS_90_9 = socket;
-
                 online_number++;
             } else if ("SS_90_3" == name && !SS_90_3) {
                 SS_90_3 = socket;
@@ -94,7 +93,7 @@ let socketManager = {
             DUT_SOCKET_LIST[name] = socket;
 
             online_number++;
-            socket.emit('register',{uniqueId:id})
+            socket.emit('dut_register',{uniqueId:id})
         } else if (type == "web") {
             if ('web_index' == name && !WEB_INDEX) {
                 WEB_INDEX = socket;
@@ -163,16 +162,19 @@ let socketManager = {
         return DUT_SOCKET_LIST;
     },
 
-    sendBroadcastMsg : function (socket,event,message) {
-        socket.emit(event,message);
-        socket.broadcast.emit(event,message);
-    },
-
-    sendMsg: function (socket,event,message) {
+    sendBroadcastMsg : function (socket,message) {
         if (socket == undefined || socket == null){
             return;
         }
-        socket.emit(event,message);
+        socket.broadcast.emit("message",message);
+    },
+
+    sendMsg: function (socket,message) {
+        if (socket == undefined || socket == null){
+            return;
+        }
+        console.log("send message : " + message);
+        socket.emit("message",message);
     },
 
     dispatchMessage : function (message,socket) {
@@ -184,6 +186,16 @@ let socketManager = {
             testManager.handleWebMessage(message,socket);
         }
     },
+    getSS_Socket : function (name) {
+        return SS_LIST[name]
+    },
+
+    getDUT_Socket : function (id) {
+
+
+
+    }
+
 
 
 

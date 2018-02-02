@@ -2,3 +2,5 @@
 /.idea
 /testlog
 /public/upload
+ffmpeg
+/uploads

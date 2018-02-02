@@ -126,6 +126,7 @@ function addDut(value) {
     let item = "<div class='dut0' id=" + value.uniqueId + "dut ><div class='dut00'><span class='span2'>" + value.name + "</span><br/><input id=" + value.uniqueId + " type='checkbox' checked></div></div>"
     $('.onlinedevice3').append(item);
     dut_list.push(value.uniqueId);
+    console.log(dut_list);
 
 }
 
@@ -198,7 +199,7 @@ function startTest() {
     let name = $('#name').val();
     let tester = $('#tester').val();
 
-    let dut_list = [];
+
 
 
     let data_ = {
@@ -244,24 +245,24 @@ function startTest() {
 
 
 
-//
-// $.ajax({
-//     type: "POST",
-//     url: satCommon.ipAddress + '/start',
-//     data:data_,
-//     dataType: "json",
-//     async:true,
-//     cache:false,
-//     traditional:true,
-//     success: function (resultData) {
-//         alert(JSON.stringify(resultData));
-//
-//         window.location.replace(satCommon.ipAddress+"?testId="+resultData.testId);
-//
-//     },
-//     error: function (XMLHttpRequest, textStatus, errorThrown) {
-//     }
-// });
+
+$.ajax({
+    type: "POST",
+    url: satCommon.ipAddress + '/start',
+    data:data_,
+    dataType: "json",
+    async:true,
+    cache:false,
+    traditional:true,
+    success: function (resultData) {
+        alert(JSON.stringify(resultData));
+
+        window.location.replace(satCommon.ipAddress+"?testId="+resultData.testId);
+
+    },
+    error: function (XMLHttpRequest, textStatus, errorThrown) {
+    }
+});
 
 
 }

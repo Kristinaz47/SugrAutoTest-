@@ -6,9 +6,9 @@ let mongoose = require('../../../db'),
     Schema = mongoose.Schema;
 //VS : volume setting
 let DutItemResult = new Schema({
-    id:{type:String,unique:true},
-    FAR : { type: String },
-    FRR: {type: String},
+    id:{type:String},
+    FAR : { type: Number ,default :-1},
+    FRR: {type: Number,default:-1},
     responseSpd:{type:Number,default:0},
     item:{type:Number},
     position:{type:String},

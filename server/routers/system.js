@@ -73,13 +73,36 @@ router.get('/getTestList', function (req, res, next) {
 });
 
 router.get('/getRunningLog',function (req, res, next) {
+     let testId = req.query.testId;
 
-     testManager.getRunningLog(function (runningLog) {
-         res.send(runningLog);
+     testManager.getRunningLog(testId,function (err,runningLog) {
+         if (err){
+             res.send('找不到对应的测试记录！:' + err)
+         }else {
+             res.send(runningLog);
+         }
          res.end();
     });
 
 });
+
+router.get('/test1',function (req, res, next) {
+
+    socketManager.getRunningSocket().emit("running","hello");
+    let tt = (socketManager.getRunningSocket()!=undefined);
+    res.send(tt);
+    res.end();
+});
+
+router.get('/getDutTestDetail',function (req, res, next) {
+
+    let dut_id = req.query.uniqueId;
+
+
+
+
+});
+
 
 
 module.exports = router;
